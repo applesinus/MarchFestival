@@ -10,6 +10,7 @@ public class ChoiceBox : MonoBehaviour
     [SerializeField] public bool DebugMode = false;
     [SerializeField] public GameObject ButtonPrefab;
     [SerializeField] public TextBox TextBoxObject;
+    [SerializeField] public UnityEvent ExitDialogue;
     private struct Choice
     {
         public string text;
@@ -75,8 +76,7 @@ public class ChoiceBox : MonoBehaviour
         foreach (Choice choice in choices) Destroy(choice.button);
         if (choices[idx].nextRoot == "exit")
         {
-            Debug.LogWarning("Exit");
-            // TODO
+            ExitDialogue.Invoke();
         }
         else
         {

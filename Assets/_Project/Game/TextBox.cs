@@ -6,16 +6,21 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.AI;
 
 public class TextBox : MonoBehaviour
 {
     [SerializeField] public bool DebugMode = false;
     [SerializeField] public string DebugDialogueID = "elderIntroduction";
-    [SerializeField] public int animationSpeed = 1;
+    [SerializeField] public int animationSpeed = 3;
     [SerializeField] public TextMeshProUGUI textBox;
     [SerializeField] public TextMeshProUGUI characterName;
     [SerializeField] public Dictionary<string, GameObject> characters;
     [SerializeField] public UnityEvent<string> ChoiceEvent;
+    [SerializeField] public UnityEvent<string, string, string> CharacterEvent;
+
+    private int timeOfDay = 0;
+    private int day = 0;
 
     private bool isSpacePressed = false;
     private bool isAnimationActive = false;
@@ -117,6 +122,15 @@ public class TextBox : MonoBehaviour
             textBox.text = "";
 
             isAnimationActive = true;
+
+            List<(string, string, string)> characterUpdates = getCharacterUpdate();
+            if (characterUpdates != null)
+            {
+                foreach ((string name, string sprite, string animation) in characterUpdates)
+                {
+                    CharacterEvent.Invoke(name, sprite, animation);
+                }
+            }
         }
 
         if (DebugMode) Debug.Log("Message Box Clicked");
@@ -132,8 +146,42 @@ public class TextBox : MonoBehaviour
         return TextManager.Instance.GetText($"dialogue.{dialogueID}[{messageID}].speaker");
     }
 
+    private List<(string, string, string)> getCharacterUpdate()
+    {
+        string character0 = TextManager.Instance.GetText($"dialogue.{dialogueID}[{messageID}].characters[0].name");
+        if (character0 == $"dialogue.{dialogueID}[{messageID}].characters[0].name") return null;
+
+        List<(string, string, string)> characters = new List<(string, string, string)>();
+        int i = 0;
+        
+        while (true)
+        {
+            string character = TextManager.Instance.GetText($"dialogue.{dialogueID}[{messageID}].characters[{i}].name");
+            if (character == $"dialogue.{dialogueID}[{messageID}].characters[{i}].name") break;
+
+            string emotion = TextManager.Instance.GetText($"dialogue.{dialogueID}[{messageID}].characters[{i}].sprite");
+            if (emotion == $"dialogue.{dialogueID}[{messageID}].characters[{i}].sprite") break;
+
+            string animation = TextManager.Instance.GetText($"dialogue.{dialogueID}[{messageID}].characters[{i}].animation");
+            if (animation == $"dialogue.{dialogueID}[{messageID}].characters[{i}].animation") break;
+
+            characters.Add((character, emotion, animation));
+            i++;
+        }
+
+        return characters;
+    }
+
     public void InitiateDialogue(string id)
     {
+        if (id.Contains("root"))
+        {
+            day += timeOfDay/2;
+            timeOfDay = (timeOfDay+1)%3;
+
+            if (DebugMode) Debug.Log($"Day: {day}, Time of day: {timeOfDay}");
+        }
+
         gameObject.SetActive(true);
         isChoiceActive = false;
 
