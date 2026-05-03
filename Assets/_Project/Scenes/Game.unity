@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c84f8915eae98cd4c94fe5b5a0beee26, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 89becdbc2d399b946a9b55b77902797f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -376,6 +376,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1542032867}
+        m_TargetAssemblyTypeName: ClipsSwitcher, Assembly-CSharp
+        m_MethodName: PlayPianoMix
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   houseOccupant: boy
 --- !u!61 &77810281
 BoxCollider2D:
@@ -495,6 +507,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2042899292}
         m_TargetAssemblyTypeName: Dialogue, Assembly-CSharp
         m_MethodName: OpenDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1542032867}
+        m_TargetAssemblyTypeName: ClipsSwitcher, Assembly-CSharp
+        m_MethodName: PlayPianoMix
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -719,6 +743,18 @@ MonoBehaviour:
       - m_Target: {fileID: 830274088}
         m_TargetAssemblyTypeName: Village, Assembly-CSharp
         m_MethodName: OpenVillage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1542032867}
+        m_TargetAssemblyTypeName: ClipsSwitcher, Assembly-CSharp
+        m_MethodName: PlayMainMix
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1160,6 +1196,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1542032867}
+        m_TargetAssemblyTypeName: ClipsSwitcher, Assembly-CSharp
+        m_MethodName: PlayPianoMix
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   houseOccupant: oldMan
 --- !u!61 &423894982
 BoxCollider2D:
@@ -1279,6 +1327,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2042899292}
         m_TargetAssemblyTypeName: Dialogue, Assembly-CSharp
         m_MethodName: OpenDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1542032867}
+        m_TargetAssemblyTypeName: ClipsSwitcher, Assembly-CSharp
+        m_MethodName: PlayPianoMix
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1673,7 +1733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DebugMode: 1
-  DebugDialogueID: empty
+  DebugDialogueID: intro
   animationSpeed: 1
   textBox: {fileID: 760005208}
   characterName: {fileID: 1724455388}
@@ -2037,6 +2097,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3963323483023302263, guid: 1d0b2f2b4adbfa64796c42dddd6d93ec, type: 3}
+      propertyPath: _debugMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3963323483023302263, guid: 1d0b2f2b4adbfa64796c42dddd6d93ec, type: 3}
+      propertyPath: _defaultLanguage
+      value: en
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1d0b2f2b4adbfa64796c42dddd6d93ec, type: 3}
 --- !u!1 &1255672728
@@ -2131,6 +2199,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2042899292}
         m_TargetAssemblyTypeName: Dialogue, Assembly-CSharp
         m_MethodName: OpenDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1542032867}
+        m_TargetAssemblyTypeName: ClipsSwitcher, Assembly-CSharp
+        m_MethodName: PlayPianoMix
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2281,6 +2361,74 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500238421}
   m_CullTransparentMesh: 1
+--- !u!1001 &1542032866
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1077344082995278712, guid: f5dbd1f9185c9434f8b86523d2abbba7, type: 3}
+      propertyPath: m_Name
+      value: AidioSwitcher
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095354863257042224, guid: f5dbd1f9185c9434f8b86523d2abbba7, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095354863257042224, guid: f5dbd1f9185c9434f8b86523d2abbba7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.2129126
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095354863257042224, guid: f5dbd1f9185c9434f8b86523d2abbba7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5518403
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095354863257042224, guid: f5dbd1f9185c9434f8b86523d2abbba7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 36.459896
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095354863257042224, guid: f5dbd1f9185c9434f8b86523d2abbba7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095354863257042224, guid: f5dbd1f9185c9434f8b86523d2abbba7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095354863257042224, guid: f5dbd1f9185c9434f8b86523d2abbba7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095354863257042224, guid: f5dbd1f9185c9434f8b86523d2abbba7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095354863257042224, guid: f5dbd1f9185c9434f8b86523d2abbba7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095354863257042224, guid: f5dbd1f9185c9434f8b86523d2abbba7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5095354863257042224, guid: f5dbd1f9185c9434f8b86523d2abbba7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f5dbd1f9185c9434f8b86523d2abbba7, type: 3}
+--- !u!114 &1542032867 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7056344077051609723, guid: f5dbd1f9185c9434f8b86523d2abbba7, type: 3}
+  m_PrefabInstance: {fileID: 1542032866}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df8aa50ef4c2d4047800104c7e4adf2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1563703126
 GameObject:
   m_ObjectHideFlags: 0
@@ -2669,6 +2817,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1542032867}
+        m_TargetAssemblyTypeName: ClipsSwitcher, Assembly-CSharp
+        m_MethodName: PlayHGMix
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   houseOccupant: woman
 --- !u!61 &1851857519
 BoxCollider2D:
@@ -2797,6 +2957,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1542032867}
+        m_TargetAssemblyTypeName: ClipsSwitcher, Assembly-CSharp
+        m_MethodName: PlayPianoMix
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   houseOccupant: carpenter
 --- !u!61 &1943779370
 BoxCollider2D:
@@ -2916,6 +3088,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2042899292}
         m_TargetAssemblyTypeName: Dialogue, Assembly-CSharp
         m_MethodName: OpenDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1542032867}
+        m_TargetAssemblyTypeName: ClipsSwitcher, Assembly-CSharp
+        m_MethodName: PlayPianoMix
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

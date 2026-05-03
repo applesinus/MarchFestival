@@ -6,7 +6,7 @@ public class Dialogue : MonoBehaviour
 {
     private void Start()
     {
-        CloseDialogue();
+        OpenDialogue();
     }
     
     public void OpenDialogue() => gameObject.SetActive(true);

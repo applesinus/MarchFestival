@@ -48,7 +48,7 @@ public class Characters : MonoBehaviour
 
     private void Start()
     {
-        CloseHouse();
+        OpenHouse();
     }
 
     public void UpdateSprite(string character, string emotion, string animation)
