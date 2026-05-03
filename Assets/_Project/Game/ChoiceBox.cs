@@ -16,6 +16,7 @@ public class ChoiceBox : MonoBehaviour
         public string text;
         public string nextRoot;
         public GameObject button;
+        public string[] effects;
     }
     private List<Choice> choices;
 
@@ -38,6 +39,57 @@ public class ChoiceBox : MonoBehaviour
                 break;
             }
 
+            string[] requires = TextManager.Instance.GetList($"{preffix}.choices[{i}].requires");
+            if (requires != null)
+            {
+                bool ok = true;
+
+                foreach (string r in requires)
+                {
+                    if (r.StartsWith("no"))
+                    {
+                        string key = r.Substring(2);
+                        Debug.Log("key: " + key);
+                        if (PlayerPrefs.HasKey($"runSettings.saved.{key}") && PlayerPrefs.GetInt($"runSettings.saved.{key}") == 1)
+                        {
+                            ok = false;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if (PlayerPrefs.GetInt($"runSettings.saved.{r}") == 0)
+                        {
+                            ok = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (!ok)
+                {
+                    i++;
+                    continue;
+                }
+            }
+
+            string[] effects = TextManager.Instance.GetList($"{preffix}.choices[{i}].effects");
+            if (effects != null)
+            {
+                foreach (string e in effects)
+                {
+                    if (e.StartsWith("no"))
+                    {
+                        string key = e.Substring(2);
+                        PlayerPrefs.SetInt($"runSettings.saved.{key}", 0);
+                    }
+                    else
+                    {
+                        PlayerPrefs.SetInt($"runSettings.saved.{e}", 1);
+                    }
+                }
+            }
+
             // TODO: remove instantiation, use preplaced prefabs instead
             GameObject button = Instantiate(ButtonPrefab, transform);
             button.transform.SetParent(transform, false);
@@ -56,14 +108,16 @@ public class ChoiceBox : MonoBehaviour
             textForTM.IsSet = true;
 
             UnityEvent clickEvent = button.GetComponent<ButtonBox>().OnClick;
-            int choiceIdx = i;
-            clickEvent.AddListener(() => ChoiceDone(choiceIdx));
 
             choices.Add(new Choice{
                 text = text,
                 nextRoot = nextRoot,
                 button = button
             });
+            {
+                int choicesCount = choices.Count-1;
+                clickEvent.AddListener(() => ChoiceDone(choicesCount));
+            }
 
             if (DebugMode) Debug.Log($"Choice {i}: {text} -> {nextRoot}");
 
@@ -73,6 +127,8 @@ public class ChoiceBox : MonoBehaviour
 
     public void ChoiceDone(int idx)
     {
+        if (DebugMode) Debug.Log($"Choice {idx} done");
+        
         foreach (Choice choice in choices) Destroy(choice.button);
         if (choices[idx].nextRoot == "exit")
         {

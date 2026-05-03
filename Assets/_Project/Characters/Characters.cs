@@ -25,13 +25,12 @@ public class Characters : MonoBehaviour
     [SerializeField] public List<CharacterData> Sprites;
     [SerializeField] public GameObject characterPrefab;
 
-    private Dictionary<string, Dictionary<string, Sprite>> SpritesDictionary;
-    private Dictionary<string, GameObject> onScreenCharacters;
+    private Dictionary<string, Dictionary<string, Sprite>> SpritesDictionary = new Dictionary<string, Dictionary<string, Sprite>>();
+    private Dictionary<string, GameObject> onScreenCharacters = new Dictionary<string, GameObject>();
 
-    public void Start()
+    private void Awake()
     {
-        onScreenCharacters = new Dictionary<string, GameObject>();
-        SpritesDictionary = new Dictionary<string, Dictionary<string, Sprite>>();
+        Debug.LogWarning($"Characters started! Count: {Sprites.Count}");
 
         foreach (CharacterData spriteData in Sprites)
         {
@@ -45,6 +44,11 @@ public class Characters : MonoBehaviour
                 SpritesDictionary[spriteData.Character].Add(emotionData.Emotion, emotionData.Sprite);
             }
         }
+    }
+
+    private void Start()
+    {
+        CloseHouse();
     }
 
     public void UpdateSprite(string character, string emotion, string animation)
@@ -97,6 +101,10 @@ public class Characters : MonoBehaviour
         {
             if (SpritesDictionary[character].ContainsKey(emotion))
             {
+                if (PlayerPrefs.GetInt($"runSettings.{character}.isBad") == 1)
+                {
+                    if (SpritesDictionary[character].ContainsKey($"{emotion}_bad")) return SpritesDictionary[character][$"{emotion}_bad"];
+                }
                 return SpritesDictionary[character][emotion];
             }
             else

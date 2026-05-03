@@ -7,6 +7,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.AI;
+using System.ComponentModel;
 
 public class TextBox : MonoBehaviour
 {
@@ -18,17 +19,22 @@ public class TextBox : MonoBehaviour
     [SerializeField] public Dictionary<string, GameObject> characters;
     [SerializeField] public UnityEvent<string> ChoiceEvent;
     [SerializeField] public UnityEvent<string, string, string> CharacterEvent;
+    [SerializeField] public UnityEvent<string> ArtifactEvent;
+    [SerializeField] public UnityEvent NewMessage;
 
-    private int timeOfDay = 0;
+    private int timeOfDay = 2;
     private int day = 0;
+
+    private bool isArtifactUsed = false;
+    private string thoughtSuffix = "";
 
     private bool isSpacePressed = false;
     private bool isAnimationActive = false;
     
     private string dialogueID;
     private int messageID;
-    private List<(string, int)> choices;
     private bool isChoiceActive = false;
+    private Dictionary<string, bool> visited = new Dictionary<string, bool>();
 
     private void Start()
     {
@@ -38,7 +44,6 @@ public class TextBox : MonoBehaviour
             InitiateDialogue(DebugDialogueID);
         }
         animationProgress = 0;
-        choices = new List<(string, int)>();
     }
 
     private void Update()
@@ -98,16 +103,18 @@ public class TextBox : MonoBehaviour
         {
             ChoiceEvent.Invoke($"dialogue.{dialogueID}[{messageID}]");
         }
-        else
+        else if (isArtifactUsed)
         {
-            messageID++;
+            MessageBoxClicked();
         }
 
         if (DebugMode) Debug.Log("Animation Reset");
     }
 
     public void MessageBoxClicked()
-    {
+    {   
+        Debug.Log($"MessageBoxClicked, IsAnimationActive: {isAnimationActive}");
+
         if (isChoiceActive) return;
 
         if (isAnimationActive)
@@ -116,7 +123,15 @@ public class TextBox : MonoBehaviour
         }
         else
         {
+            NewMessage.Invoke();
+
+            if (!isArtifactUsed)
+            {
+                messageID++;
+            }
+
             characterName.text = getCharacterName();
+            if (isArtifactUsed) characterName.text += " " + TextManager.Instance.GetText("game.realThoughts");
 
             message = getNewMessage();
             textBox.text = "";
@@ -131,13 +146,35 @@ public class TextBox : MonoBehaviour
                     CharacterEvent.Invoke(name, sprite, animation);
                 }
             }
-        }
 
-        if (DebugMode) Debug.Log("Message Box Clicked");
+            if (isArtifactUsed)
+            {
+                isArtifactUsed = false;
+            }
+            else
+            {
+                if (TextManager.Instance.GetText($"dialogue.{dialogueID}[{messageID}].thought") != $"dialogue.{dialogueID}[{messageID}].thought")
+                {
+                    ArtifactEvent.Invoke($"dialogue.{dialogueID}[{messageID}]");
+                }
+            }
+        }
     }
 
     private string getNewMessage()
     {
+        if (isArtifactUsed)
+        {
+            if (TextManager.Instance.GetText($"dialogue.{dialogueID}[{messageID}].thought") == $"dialogue.{dialogueID}[{messageID}].thought")
+            {
+                return TextManager.Instance.GetText($"dialogue.{dialogueID}[{messageID}].message");
+            }
+            else
+            {
+                PlayerPrefs.SetInt("lastDayArtifactUsed", day);
+                return TextManager.Instance.GetText($"dialogue.{dialogueID}[{messageID}].thought{thoughtSuffix}");
+            }
+        }
         return TextManager.Instance.GetText($"dialogue.{dialogueID}[{messageID}].message");
     }
 
@@ -184,15 +221,64 @@ public class TextBox : MonoBehaviour
 
         gameObject.SetActive(true);
         isChoiceActive = false;
+        isAnimationActive = false;
 
         dialogueID = id;
-        messageID = 0;
+        messageID = -1;
 
         MessageBoxClicked();
+    }
+
+    public void EnterToHouse(string houseOccupant)
+    {
+        Debug.LogWarning($"Enter to house: {houseOccupant}");
+
+        // TODO: change
+        string rootID = $"{houseOccupant}_root_1";
+        if (visited.ContainsKey(houseOccupant))
+        {
+            if (houseOccupant == "woman")
+            {
+                rootID = "tavernRelax";
+            }
+            else
+            {
+                rootID = "no";
+            }
+        }
+        else
+        {
+            visited.Add(houseOccupant, true);
+        }
+        
+        InitiateDialogue(rootID);
     }
 
     private void endDialogue()
     {
         gameObject.SetActive(false);
+    }
+
+    public void UseArtifact(string thoughtType)
+    {
+        Debug.LogWarning("Artifact used!");
+
+        if (isChoiceActive)
+        {
+            Debug.LogWarning("Using artifact while a choice box is active!");
+            return;
+        }
+
+        if (thoughtType == "bad")
+        {
+            thoughtSuffix = "_bad";
+        }
+        else
+        {
+            thoughtSuffix = "";
+        }
+
+        isArtifactUsed = true;
+        messageEnd();
     }
 }

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Dialogue : MonoBehaviour
 {
+    private void Start()
+    {
+        CloseDialogue();
+    }
+    
     public void OpenDialogue() => gameObject.SetActive(true);
     public void CloseDialogue() => gameObject.SetActive(false);
 }
