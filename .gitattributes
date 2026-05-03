@@ -3,3 +3,11 @@
 
 * linguist-detectable=false
 Assets/_Project/** linguist-detectable=true
+
+*.meta linguist-detectable=false linguist-vendored
+*.asset linguist-detectable=false linguist-vendored
+*.unity linguist-detectable=false linguist-vendored
+*.prefab linguist-detectable=false linguist-vendored
+*.mat linguist-detectable=false linguist-vendored
+*.controller linguist-detectable=false linguist-vendored
+*.anim linguist-detectable=false linguist-vendored
