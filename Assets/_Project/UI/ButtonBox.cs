@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Button : MonoBehaviour
+public class ButtonBox : MonoBehaviour
 {
     [Header("Output Events")]
     [SerializeField] public UnityEvent OnClick;
@@ -12,6 +12,7 @@ public class Button : MonoBehaviour
     [Header("Animation")]
     [SerializeField] public AnimationCurve curve = AnimationCurve.EaseInOut(0, 0, 1, 1);
     [SerializeField] public float duration = 0.1f;
+    [SerializeField] public Transform button;
 
     [Header("Sound")]
     [SerializeField] public AudioClip buttonDown;
@@ -26,21 +27,22 @@ public class Button : MonoBehaviour
 
     private void Start()
     {
-        baseScale = transform.localScale;
+        baseScale = button.localScale;
         affectedScale = baseScale * 0.8f;
     }
 
-    private void OnMouseDown()
+
+    public void OnMouseDown()
     {
         Animation(baseScale, affectedScale);
     }
 
-    private void OnMouseUp()
+    public void OnMouseUp()
     {
         Animation(affectedScale, baseScale);
     }
 
-    private void OnMouseUpAsButton()
+    public void OnMouseUpAsButton()
     {
         OnClick.Invoke();
     }
@@ -58,7 +60,7 @@ public class Button : MonoBehaviour
         if (timer < 1f)
         {
             timer += Time.deltaTime / duration;
-            transform.localScale = Vector3.Lerp(startScale, endScale, curve.Evaluate(timer));
+            button.localScale = Vector3.Lerp(startScale, endScale, curve.Evaluate(timer));
         }
     }
 

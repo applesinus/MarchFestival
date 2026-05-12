@@ -19,7 +19,10 @@ public class TextBox : MonoBehaviour
     [SerializeField] public UnityEvent<string> ChoiceEvent;
     [SerializeField] public UnityEvent<string, string, string> CharacterEvent;
     [SerializeField] public UnityEvent<string> ArtifactEvent;
+    [SerializeField] public UnityEvent StartArtifactUsed;
+    [SerializeField] public UnityEvent EndArtifactUsed;
     [SerializeField] public UnityEvent NewMessage;
+    [SerializeField] public UnityEvent<int, int> UpdateClock;
 
     private int timeOfDay = 2;
     private int day = 0;
@@ -149,6 +152,7 @@ public class TextBox : MonoBehaviour
             if (isArtifactUsed)
             {
                 isArtifactUsed = false;
+                EndArtifactUsed.Invoke();
             }
             else
             {
@@ -210,10 +214,11 @@ public class TextBox : MonoBehaviour
 
     public void InitiateDialogue(string id)
     {
-        if (id.Contains("root"))
+        if (id.Contains("root") || id == "intro")
         {
             day += timeOfDay/2;
             timeOfDay = (timeOfDay+1)%3;
+            UpdateClock.Invoke(day, timeOfDay);
 
             if (DebugMode) Debug.Log($"Day: {day}, Time of day: {timeOfDay}");
         }
@@ -253,11 +258,6 @@ public class TextBox : MonoBehaviour
         InitiateDialogue(rootID);
     }
 
-    private void endDialogue()
-    {
-        gameObject.SetActive(false);
-    }
-
     public void UseArtifact(string thoughtType)
     {
         Debug.LogWarning("Artifact used!");
@@ -278,6 +278,7 @@ public class TextBox : MonoBehaviour
         }
 
         isArtifactUsed = true;
+        StartArtifactUsed.Invoke();
         messageEnd();
     }
 }

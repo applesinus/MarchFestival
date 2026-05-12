@@ -13,6 +13,8 @@ public class Characters : MonoBehaviour
     {
         public string Character;
         public List<EmotionData> Emotions;
+        public Sprite Background;
+        public Sprite BackgroundBad;
     }
 
     [Serializable]
@@ -24,9 +26,22 @@ public class Characters : MonoBehaviour
 
     [SerializeField] public List<CharacterData> Sprites;
     [SerializeField] public GameObject characterPrefab;
+    [SerializeField] public Image background;
 
-    private Dictionary<string, Dictionary<string, Sprite>> SpritesDictionary = new Dictionary<string, Dictionary<string, Sprite>>();
-    private Dictionary<string, GameObject> onScreenCharacters = new Dictionary<string, GameObject>();
+    private Dictionary<string, Dictionary<string, Sprite>> SpritesDictionary = new();
+    private struct backgrounds
+    {
+        public Sprite good;
+        public Sprite bad;
+    }
+    private Dictionary<string, backgrounds> characterBackgrounds = new();
+
+    private struct onScreenCharacterData
+    {
+        public GameObject gameObject;
+        public string Emotion;
+    }
+    private Dictionary<string, onScreenCharacterData> onScreenCharacters = new();
 
     private void Awake()
     {
@@ -43,12 +58,46 @@ public class Characters : MonoBehaviour
             {
                 SpritesDictionary[spriteData.Character].Add(emotionData.Emotion, emotionData.Sprite);
             }
+
+            if (!characterBackgrounds.ContainsKey(spriteData.Character))
+            {
+                backgrounds bgs = new();
+                if (spriteData.BackgroundBad == null) bgs.bad = spriteData.Background; else bgs.bad = spriteData.BackgroundBad;
+                bgs.good = spriteData.Background;
+
+                characterBackgrounds.Add(spriteData.Character, bgs);
+            }
         }
     }
 
     private void Start()
     {
-        OpenHouse();
+        OpenHouse("oldMan");
+    }
+
+    private bool isUpset = false;
+    public void SwitchUpset()
+    {
+        foreach (string character in onScreenCharacters.Keys)
+        {
+            if (isUpset)
+            {
+                UpdateSprite(character, onScreenCharacters[character].Emotion, "update");
+            }
+            else
+            {
+                if (PlayerPrefs.GetInt($"runSettings.{character}.isBad") == 1)
+                {
+                    UpdateSprite(character, "upset", "update");
+                }
+                else
+                {
+                    UpdateSprite(character, "neutral", "update");
+                }
+            }
+        }
+
+        isUpset = !isUpset;
     }
 
     public void UpdateSprite(string character, string emotion, string animation)
@@ -62,21 +111,21 @@ public class Characters : MonoBehaviour
                 if (onScreenCharacters.ContainsKey(character))
                 {
                     Debug.LogWarning($"Character {character} already on screen!");
-                    onScreenCharacters[character].GetComponent<Image>().sprite = sprite;
+                    onScreenCharacters[character].gameObject.GetComponent<Image>().sprite = sprite;
                 }
                 else
                 {
                     GameObject characterObject = Instantiate(characterPrefab, transform);
                     characterObject.transform.localPosition = new Vector3(0, 0, 0);
                     characterObject.GetComponent<Image>().sprite = sprite;
-                    onScreenCharacters.Add(character, characterObject);
+                    onScreenCharacters.Add(character, new onScreenCharacterData { gameObject = characterObject, Emotion = emotion });
                 }
                 break;
 
             case "disappear":
                 if (onScreenCharacters.ContainsKey(character))
                 {
-                    Destroy(onScreenCharacters[character]);
+                    Destroy(onScreenCharacters[character].gameObject);
                     onScreenCharacters.Remove(character);
                 }
                 else
@@ -84,12 +133,23 @@ public class Characters : MonoBehaviour
                     Debug.LogWarning($"Character {character} already not on screen!");
                 }
                 break;
+            
+            case "update":
+                if (onScreenCharacters.ContainsKey(character))
+                {
+                    onScreenCharacters[character].gameObject.GetComponent<Image>().sprite = sprite;
+                }
+                else
+                {
+                    Debug.LogWarning($"Character {character} not on screen!");
+                }
+                break;
 
             default:
                 Debug.LogError($"Animation {animation} not found! Simply changing sprite");
                 if (onScreenCharacters.ContainsKey(character))
                 {
-                    onScreenCharacters[character].GetComponent<Image>().sprite = sprite;
+                    onScreenCharacters[character].gameObject.GetComponent<Image>().sprite = sprite;
                 }
                 break;
         }
@@ -101,19 +161,30 @@ public class Characters : MonoBehaviour
         {
             if (SpritesDictionary[character].ContainsKey(emotion))
             {
-                if (PlayerPrefs.GetInt($"runSettings.{character}.isBad") == 1)
+                if (PlayerPrefs.GetInt($"runSettings.{character}.isBad") == 1 && SpritesDictionary[character].ContainsKey(emotion + "_bad"))
                 {
-                    if (SpritesDictionary[character].ContainsKey($"{emotion}_bad")) return SpritesDictionary[character][$"{emotion}_bad"];
+                    return SpritesDictionary[character][emotion + "_bad"];
                 }
-                return SpritesDictionary[character][emotion];
+                else
+                {
+                    return SpritesDictionary[character][emotion];
+                }
             }
             else
             {
                 Debug.LogError($"Emotion {emotion} of character {character} not found!");
+
+                if (SpritesDictionary[character].ContainsKey("neutral")) return SpritesDictionary[character]["neutral"];
+
+                Debug.LogError($"Emotion neutral of character {character} not found! too");
+                Sprite sprite = null;
                 foreach (string emotionName in SpritesDictionary[character].Keys)
                 {
-                    return SpritesDictionary[character][emotionName];
+                    sprite = SpritesDictionary[character][emotionName];
+                    if (PlayerPrefs.GetInt($"runSettings.{character}.isBad") == 1 && emotionName.Contains("_bad")) return sprite;
+                    if (PlayerPrefs.GetInt($"runSettings.{character}.isBad") == 0 && !emotionName.Contains("_bad")) return sprite;
                 }
+                return sprite;
             }
         }
         else
@@ -125,6 +196,33 @@ public class Characters : MonoBehaviour
         return null;
     }
 
-    public void OpenHouse() => gameObject.SetActive(true);
-    public void CloseHouse() => gameObject.SetActive(false);
+    public void OpenHouse(string character)
+    {
+        if (characterBackgrounds.ContainsKey(character))
+        {
+            if (PlayerPrefs.GetInt($"runSettings.{character}.isBad") == 1) background.sprite = characterBackgrounds[character].bad;
+            else background.sprite = characterBackgrounds[character].good;
+        }
+        else
+        {
+            Debug.LogError($"Character {character} not found!");
+            background.sprite = characterBackgrounds["unknown"].good;
+        }
+        gameObject.SetActive(true);
+    }
+
+    public void CloseHouse()
+    {
+        clearCharacters();
+        gameObject.SetActive(false);
+    }
+
+    private void clearCharacters()
+    {
+        foreach (onScreenCharacterData character in onScreenCharacters.Values)
+        {
+            Destroy(character.gameObject);
+        }
+        onScreenCharacters.Clear();
+    }
 }
