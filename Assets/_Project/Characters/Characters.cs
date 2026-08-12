@@ -13,8 +13,10 @@ public class Characters : MonoBehaviour
     {
         public string Character;
         public List<EmotionData> Emotions;
-        public Sprite Background;
-        public Sprite BackgroundBad;
+        public Sprite BackgroundDay;
+        public Sprite BackgroundNight;
+        public Sprite BackgroundDayBad;
+        public Sprite BackgroundNightBad;
     }
 
     [Serializable]
@@ -31,8 +33,10 @@ public class Characters : MonoBehaviour
     private Dictionary<string, Dictionary<string, Sprite>> SpritesDictionary = new();
     private struct backgrounds
     {
-        public Sprite good;
-        public Sprite bad;
+        public Sprite dayGood;
+        public Sprite nightGood;
+        public Sprite dayBad;
+        public Sprite nightBad;
     }
     private Dictionary<string, backgrounds> characterBackgrounds = new();
 
@@ -62,8 +66,15 @@ public class Characters : MonoBehaviour
             if (!characterBackgrounds.ContainsKey(spriteData.Character))
             {
                 backgrounds bgs = new();
-                if (spriteData.BackgroundBad == null) bgs.bad = spriteData.Background; else bgs.bad = spriteData.BackgroundBad;
-                bgs.good = spriteData.Background;
+                if (spriteData.BackgroundDay == null)
+                {
+                    Debug.LogError($"Background for day of character {spriteData.Character} not found!");
+                    bgs.dayGood = Sprite.Create(new Texture2D(10, 10), new Rect(0, 0, 1, 1), new Vector2(0.5f, 0.5f));
+                }
+                else bgs.dayGood = spriteData.BackgroundDay;
+                if (spriteData.BackgroundNight == null) bgs.nightGood = bgs.dayGood; else bgs.nightGood = spriteData.BackgroundNight;
+                if (spriteData.BackgroundDayBad == null) bgs.dayBad = bgs.dayGood; else bgs.dayBad = spriteData.BackgroundDayBad;
+                if (spriteData.BackgroundNightBad == null) bgs.nightBad = bgs.nightGood; else bgs.nightBad = spriteData.BackgroundNightBad;
 
                 characterBackgrounds.Add(spriteData.Character, bgs);
             }
@@ -72,7 +83,7 @@ public class Characters : MonoBehaviour
 
     private void Start()
     {
-        OpenHouse("oldMan");
+        OpenHouse("oldMan", 2);
     }
 
     private bool isUpset = false;
@@ -192,21 +203,33 @@ public class Characters : MonoBehaviour
             Debug.LogError($"Character {character} not found!");
         }
 
-        if (characterPrefab != null) return characterPrefab.GetComponent<Image>().sprite;
+        if (characterPrefab != null)
+        {
+            Debug.Log($"Character {character} found! Emotion is {emotion}! Sprite is {characterPrefab.GetComponent<Image>().sprite.name}");
+            return characterPrefab.GetComponent<Image>().sprite;
+        }
         return null;
     }
 
-    public void OpenHouse(string character)
+    public void OpenHouse(string character, int time)
     {
         if (characterBackgrounds.ContainsKey(character))
         {
-            if (PlayerPrefs.GetInt($"runSettings.{character}.isBad") == 1) background.sprite = characterBackgrounds[character].bad;
-            else background.sprite = characterBackgrounds[character].good;
+            if (PlayerPrefs.GetInt($"runSettings.{character}.isBad") == 1)
+            {
+                if (time < 2) background.sprite = characterBackgrounds[character].dayBad;
+                else background.sprite = characterBackgrounds[character].nightBad;
+            }
+            else
+            {
+                if (time < 2) background.sprite = characterBackgrounds[character].dayGood;
+                else background.sprite = characterBackgrounds[character].nightGood;
+            }
         }
         else
         {
             Debug.LogError($"Character {character} not found!");
-            background.sprite = characterBackgrounds["unknown"].good;
+            background.sprite = characterBackgrounds["unknown"].dayGood;
         }
         gameObject.SetActive(true);
     }

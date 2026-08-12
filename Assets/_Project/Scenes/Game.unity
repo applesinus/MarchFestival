@@ -159,7 +159,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1280, y: 720}
+  m_SizeDelta: {x: 1920, y: 1280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &860577
 MonoBehaviour:
@@ -311,7 +311,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1280, y: 720}
+  m_SizeDelta: {x: 1920, y: 1280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &77810280
 MonoBehaviour:
@@ -352,18 +352,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 908426526}
-        m_TargetAssemblyTypeName: Characters, Assembly-CSharp
-        m_MethodName: OpenHouse
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: boy
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2042899292}
         m_TargetAssemblyTypeName: Dialogue, Assembly-CSharp
         m_MethodName: OpenDialogue
@@ -388,6 +376,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onClickWithTime:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 908426526}
+        m_TargetAssemblyTypeName: Characters, Assembly-CSharp
+        m_MethodName: OpenHouse
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  clock: {fileID: 135760962}
   houseOccupant: boy
 --- !u!61 &77810281
 BoxCollider2D:
@@ -451,7 +455,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1280, y: 720}
+  m_SizeDelta: {x: 1920, y: 1280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &89247204
 MonoBehaviour:
@@ -492,18 +496,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 908426526}
-        m_TargetAssemblyTypeName: Characters, Assembly-CSharp
-        m_MethodName: OpenHouse
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: trader
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2042899292}
         m_TargetAssemblyTypeName: Dialogue, Assembly-CSharp
         m_MethodName: OpenDialogue
@@ -528,6 +520,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onClickWithTime:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 908426526}
+        m_TargetAssemblyTypeName: Characters, Assembly-CSharp
+        m_MethodName: OpenHouse
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  clock: {fileID: 135760962}
   houseOccupant: trader
 --- !u!61 &89247205
 BoxCollider2D:
@@ -586,11 +594,12 @@ RectTransform:
   m_Children:
   - {fileID: 1185671085}
   - {fileID: 506889124}
+  - {fileID: 1592851851}
   m_Father: {fileID: 830274087}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.03, y: 0.8}
-  m_AnchorMax: {x: 0.3, y: 0.97}
+  m_AnchorMax: {x: 0.4, y: 0.97}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -613,6 +622,11 @@ MonoBehaviour:
   morningKey: game.morning
   afternoonKey: game.afternoon
   eveningKey: game.evening
+  artifact: {fileID: 1592851852}
+  artifactKey: game.artifact
+  availableKey: game.available
+  usedKey: game.used
+  timeProgress: 0
 --- !u!1 &198234607
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,6 +836,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 861435970}
+        m_TargetAssemblyTypeName: TextBox, Assembly-CSharp
+        m_MethodName: ExitHouse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &366819157
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -886,76 +912,24 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2042899291}
     m_Modifications:
-    - target: {fileID: 5009530000453655437, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 187054929413373201, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5009530000453655437, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5009530000453655437, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5009530000453655437, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5009530000453655437, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -296
-      objectReference: {fileID: 0}
-    - target: {fileID: 5009530000453655437, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -70
-      objectReference: {fileID: 0}
-    - target: {fileID: 6051907230844529910, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6051907230844529910, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6051907230844529910, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
-      propertyPath: m_AnchorMin.x
+    - target: {fileID: 1388252858847453852, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3613602624817950224, guid: 4b9474105ebb5bd42920c79a2c735de9, type: 2}
+    - target: {fileID: 1388252858847453852, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6051907230844529910, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
-      propertyPath: m_AnchorMin.y
+      propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6051907230844529910, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -121
-      objectReference: {fileID: 0}
-    - target: {fileID: 6051907230844529910, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -95
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217717815975325570, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217717815975325570, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217717815975325570, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217717815975325570, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217717815975325570, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217717815975325570, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
-      propertyPath: m_SizeDelta.y
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6217717817297650409, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
@@ -967,28 +941,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6217717817297650420, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217717817297650420, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217717817297650420, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
-      propertyPath: m_AnchorMin.x
+      propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6217717817297650420, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
-      propertyPath: m_AnchorMin.y
+      propertyPath: m_LocalPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217717817297650420, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 175
-      objectReference: {fileID: 0}
-    - target: {fileID: 6217717817297650420, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 6217717817297650423, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
       propertyPath: m_text
@@ -996,7 +954,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6217717817297650423, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
       propertyPath: m_fontSize
-      value: 65
+      value: 95.2
       objectReference: {fileID: 0}
     - target: {fileID: 6217717817366974394, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
       propertyPath: m_Pivot.x
@@ -1020,11 +978,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6217717817366974394, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.6
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 6217717817366974394, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 6217717817366974394, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1032,7 +990,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6217717817366974394, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -550
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6217717817366974394, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1068,7 +1026,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6217717817366974394, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 275
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6217717817366974394, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1085,6 +1043,10 @@ PrefabInstance:
     - target: {fileID: 6217717817366974395, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
       propertyPath: m_Name
       value: UseArtifact
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573489561811139188, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9149764864384575088, guid: 9f80d71dbd40247419ddf066b2144ecd, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -1189,7 +1151,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1280, y: 720}
+  m_SizeDelta: {x: 1920, y: 1280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &423894981
 MonoBehaviour:
@@ -1230,18 +1192,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 908426526}
-        m_TargetAssemblyTypeName: Characters, Assembly-CSharp
-        m_MethodName: OpenHouse
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: oldMan
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2042899292}
         m_TargetAssemblyTypeName: Dialogue, Assembly-CSharp
         m_MethodName: OpenDialogue
@@ -1266,6 +1216,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onClickWithTime:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 908426526}
+        m_TargetAssemblyTypeName: Characters, Assembly-CSharp
+        m_MethodName: OpenHouse
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  clock: {fileID: 135760962}
   houseOccupant: oldMan
 --- !u!61 &423894982
 BoxCollider2D:
@@ -1378,8 +1344,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1464,7 +1430,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1280, y: 720}
+  m_SizeDelta: {x: 1920, y: 1280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &515542982
 MonoBehaviour:
@@ -1505,18 +1471,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 908426526}
-        m_TargetAssemblyTypeName: Characters, Assembly-CSharp
-        m_MethodName: OpenHouse
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: oldLady
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2042899292}
         m_TargetAssemblyTypeName: Dialogue, Assembly-CSharp
         m_MethodName: OpenDialogue
@@ -1541,6 +1495,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onClickWithTime:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 908426526}
+        m_TargetAssemblyTypeName: Characters, Assembly-CSharp
+        m_MethodName: OpenHouse
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  clock: {fileID: 135760962}
   houseOccupant: oldLady
 --- !u!61 &515542983
 BoxCollider2D:
@@ -1657,12 +1627,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 31.65
+  m_fontSize: 59.75
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 20
-  m_fontSizeMax: 40
+  m_fontSizeMax: 60
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -1827,7 +1797,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1280, y: 720}
+  m_SizeDelta: {x: 1920, y: 1280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &830274088
 MonoBehaviour:
@@ -1911,8 +1881,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.05, y: 0}
   m_AnchorMax: {x: 0.95, y: 0}
-  m_AnchoredPosition: {x: 0, y: 140}
-  m_SizeDelta: {x: 0, y: 150}
+  m_AnchoredPosition: {x: 0, y: 200}
+  m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &861435970
 MonoBehaviour:
@@ -2087,14 +2057,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sprites:
+  - Character: unknown
+    Emotions:
+    - Emotion: neutral
+      Sprite: {fileID: 21300000, guid: d186bb185c24e8d4a925d6adc978e8b5, type: 3}
+    BackgroundDay: {fileID: 21300000, guid: c143092e6ed64eb48a46c9c4c1e3078f, type: 3}
+    BackgroundNight: {fileID: 21300000, guid: c143092e6ed64eb48a46c9c4c1e3078f, type: 3}
+    BackgroundDayBad: {fileID: 21300000, guid: c143092e6ed64eb48a46c9c4c1e3078f, type: 3}
+    BackgroundNightBad: {fileID: 21300000, guid: c143092e6ed64eb48a46c9c4c1e3078f, type: 3}
   - Character: boy
     Emotions:
     - Emotion: neutral
       Sprite: {fileID: 21300000, guid: 78cd19d2026a7b04eb7ececa192ccd65, type: 3}
     - Emotion: upset
       Sprite: {fileID: 21300000, guid: 0b73c1fc7f520da4ba90c1ee045f866c, type: 3}
-    Background: {fileID: 21300000, guid: c143092e6ed64eb48a46c9c4c1e3078f, type: 3}
-    BackgroundBad: {fileID: 0}
+    BackgroundDay: {fileID: 21300000, guid: 3096c1cb780edd0429c459a148d5c0ad, type: 3}
+    BackgroundNight: {fileID: 21300000, guid: 83a3bf147a043554a8b1d4003e62ba3d, type: 3}
+    BackgroundDayBad: {fileID: 0}
+    BackgroundNightBad: {fileID: 0}
   - Character: butcher
     Emotions:
     - Emotion: neutral
@@ -2103,62 +2083,70 @@ MonoBehaviour:
       Sprite: {fileID: 21300000, guid: 56a183db8205a7a45a7fb6167afc7d3a, type: 3}
     - Emotion: neutral_bad
       Sprite: {fileID: 21300000, guid: ac4ef66b9af18f14dae6be357eab163c, type: 3}
-    Background: {fileID: 21300000, guid: c143092e6ed64eb48a46c9c4c1e3078f, type: 3}
-    BackgroundBad: {fileID: 0}
+    BackgroundDay: {fileID: 21300000, guid: 25ae44d15ad251142a2638399c6a1b42, type: 3}
+    BackgroundNight: {fileID: 21300000, guid: 0669bd6f4a667c9488aee35f3cce61c5, type: 3}
+    BackgroundDayBad: {fileID: 0}
+    BackgroundNightBad: {fileID: 0}
   - Character: carpenter
     Emotions:
     - Emotion: neutral
       Sprite: {fileID: 21300000, guid: 42155f457c66ebe44808cd0835d1cff0, type: 3}
     - Emotion: upset
       Sprite: {fileID: 21300000, guid: 2295a46e4fe53d9479371278ae88e4c4, type: 3}
-    Background: {fileID: 21300000, guid: 1bf2f645ef411344686733933d8f35c6, type: 3}
-    BackgroundBad: {fileID: 21300000, guid: 7f4341e2343f70c46b641eb9cbd994e5, type: 3}
+    BackgroundDay: {fileID: 21300000, guid: 1bf2f645ef411344686733933d8f35c6, type: 3}
+    BackgroundNight: {fileID: 21300000, guid: b0433f7f97e41f24097b22abcdb61266, type: 3}
+    BackgroundDayBad: {fileID: 21300000, guid: 7f4341e2343f70c46b641eb9cbd994e5, type: 3}
+    BackgroundNightBad: {fileID: 21300000, guid: e8c62cc392d18bb4eb11de0cdefbcec1, type: 3}
   - Character: girl
     Emotions:
     - Emotion: neutral
       Sprite: {fileID: 21300000, guid: c47eaf896bc11374eb10faaf87aec8b9, type: 3}
     - Emotion: upset
       Sprite: {fileID: 21300000, guid: 2f6b2628efaedec4cb00dd239ff22533, type: 3}
-    Background: {fileID: 21300000, guid: cbb7ab2d8bc3e524b85253151be1ca70, type: 3}
-    BackgroundBad: {fileID: 0}
+    BackgroundDay: {fileID: 21300000, guid: cbb7ab2d8bc3e524b85253151be1ca70, type: 3}
+    BackgroundNight: {fileID: 21300000, guid: 921dbf0e4d9ac6a4290b9f98bc1ffbe8, type: 3}
+    BackgroundDayBad: {fileID: 0}
+    BackgroundNightBad: {fileID: 0}
   - Character: oldLady
     Emotions:
     - Emotion: neutral
       Sprite: {fileID: 21300000, guid: 63044d77d7405d24d93afb4f3db86b2c, type: 3}
     - Emotion: upset
       Sprite: {fileID: 21300000, guid: 3a6a5472954bdcb4f8a73f4fc11737cb, type: 3}
-    Background: {fileID: 21300000, guid: c143092e6ed64eb48a46c9c4c1e3078f, type: 3}
-    BackgroundBad: {fileID: 0}
+    BackgroundDay: {fileID: 21300000, guid: c143092e6ed64eb48a46c9c4c1e3078f, type: 3}
+    BackgroundNight: {fileID: 21300000, guid: 04a8f4849f28a234d8ad77b88bc1d62e, type: 3}
+    BackgroundDayBad: {fileID: 0}
+    BackgroundNightBad: {fileID: 0}
   - Character: oldMan
     Emotions:
     - Emotion: neutral
       Sprite: {fileID: 21300000, guid: d9e1ecf2c7334ce40ae863f927c7e3e7, type: 3}
     - Emotion: upset
       Sprite: {fileID: 21300000, guid: 75542c6af07843e4da218a647ab431c1, type: 3}
-    Background: {fileID: 21300000, guid: c143092e6ed64eb48a46c9c4c1e3078f, type: 3}
-    BackgroundBad: {fileID: 0}
+    BackgroundDay: {fileID: 21300000, guid: 1a8d67aec073b124e9c62418fd77bd70, type: 3}
+    BackgroundNight: {fileID: 21300000, guid: 207fb5cee202e9843b0382fce3054878, type: 3}
+    BackgroundDayBad: {fileID: 0}
+    BackgroundNightBad: {fileID: 0}
   - Character: trader
     Emotions:
     - Emotion: neutral
       Sprite: {fileID: 21300000, guid: 1dd572b026bd3a44ea4ca9e577d16017, type: 3}
     - Emotion: upset
       Sprite: {fileID: 21300000, guid: c26f19ac2b7d2dd4682597df69d040d0, type: 3}
-    Background: {fileID: 21300000, guid: be7702d8314d5604597d4530e90b63f7, type: 3}
-    BackgroundBad: {fileID: 0}
+    BackgroundDay: {fileID: 21300000, guid: be7702d8314d5604597d4530e90b63f7, type: 3}
+    BackgroundNight: {fileID: 21300000, guid: 80d0522081354bc42b58738de57f629b, type: 3}
+    BackgroundDayBad: {fileID: 0}
+    BackgroundNightBad: {fileID: 0}
   - Character: woman
     Emotions:
     - Emotion: neutral
       Sprite: {fileID: 21300000, guid: 78d72971eafba914993482b55e05f6bb, type: 3}
     - Emotion: upset
       Sprite: {fileID: 21300000, guid: eacc50d99ff155c47bb5b9b15c807182, type: 3}
-    Background: {fileID: 21300000, guid: c143092e6ed64eb48a46c9c4c1e3078f, type: 3}
-    BackgroundBad: {fileID: 0}
-  - Character: unknown
-    Emotions:
-    - Emotion: neutral
-      Sprite: {fileID: 21300000, guid: d186bb185c24e8d4a925d6adc978e8b5, type: 3}
-    Background: {fileID: 21300000, guid: c143092e6ed64eb48a46c9c4c1e3078f, type: 3}
-    BackgroundBad: {fileID: 0}
+    BackgroundDay: {fileID: 21300000, guid: c8ddcf10696a78e4ca49bf7473e75015, type: 3}
+    BackgroundNight: {fileID: 21300000, guid: 95c01c6d990343642ae007d9ec753906, type: 3}
+    BackgroundDayBad: {fileID: 21300000, guid: d948a1415e2134a4889c62e243bc13b5, type: 3}
+    BackgroundNightBad: {fileID: 21300000, guid: 95c01c6d990343642ae007d9ec753906, type: 3}
   characterPrefab: {fileID: 664183220522948559, guid: ed2bbed44f1f95049be3bd7923305746, type: 3}
   background: {fileID: 1500238423}
 --- !u!1 &939654750
@@ -2235,7 +2223,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1280, y: 720}
+  m_ReferenceResolution: {x: 1920, y: 1280}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
@@ -2454,8 +2442,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2540,7 +2528,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1280, y: 720}
+  m_SizeDelta: {x: 1920, y: 1280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1255672730
 MonoBehaviour:
@@ -2581,18 +2569,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 908426526}
-        m_TargetAssemblyTypeName: Characters, Assembly-CSharp
-        m_MethodName: OpenHouse
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: butcher
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2042899292}
         m_TargetAssemblyTypeName: Dialogue, Assembly-CSharp
         m_MethodName: OpenDialogue
@@ -2617,6 +2593,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onClickWithTime:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 908426526}
+        m_TargetAssemblyTypeName: Characters, Assembly-CSharp
+        m_MethodName: OpenHouse
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  clock: {fileID: 135760962}
   houseOccupant: butcher
 --- !u!61 &1255672731
 BoxCollider2D:
@@ -2677,10 +2669,10 @@ RectTransform:
   m_Father: {fileID: 939654751}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 1920, y: 1280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1500238421
 GameObject:
@@ -2715,10 +2707,10 @@ RectTransform:
   m_Father: {fileID: 908426525}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1280, y: 720}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1500238423
 MonoBehaviour:
@@ -2910,6 +2902,141 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1592851850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1592851851}
+  - component: {fileID: 1592851853}
+  - component: {fileID: 1592851852}
+  m_Layer: 0
+  m_Name: Artifact
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1592851851
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592851850}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 135760961}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: -0.5}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1592851852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592851850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'Artifact:'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 4b9474105ebb5bd42920c79a2c735de9, type: 2}
+  m_sharedMaterial: {fileID: -3613602624817950224, guid: 4b9474105ebb5bd42920c79a2c735de9, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 80
+  m_fontSizeBase: 80
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1592851853
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592851850}
+  m_CullTransparentMesh: 1
 --- !u!1 &1724455386
 GameObject:
   m_ObjectHideFlags: 0
@@ -2945,8 +3072,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.05, y: 1}
   m_AnchorMax: {x: 0.95, y: 1}
-  m_AnchoredPosition: {x: 0, y: 40}
-  m_SizeDelta: {x: 0, y: 70}
+  m_AnchoredPosition: {x: 0, y: 50}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1724455388
 MonoBehaviour:
@@ -2995,12 +3122,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55
+  m_fontSize: 80
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 55
+  m_fontSizeMax: 80
   m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 1024
@@ -3149,7 +3276,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1280, y: 720}
+  m_SizeDelta: {x: 1920, y: 1280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1851857518
 MonoBehaviour:
@@ -3190,18 +3317,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 908426526}
-        m_TargetAssemblyTypeName: Characters, Assembly-CSharp
-        m_MethodName: OpenHouse
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: woman
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2042899292}
         m_TargetAssemblyTypeName: Dialogue, Assembly-CSharp
         m_MethodName: OpenDialogue
@@ -3216,7 +3331,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1542032867}
         m_TargetAssemblyTypeName: ClipsSwitcher, Assembly-CSharp
-        m_MethodName: PlayHGMix
+        m_MethodName: PlayPianoMix
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3226,6 +3341,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onClickWithTime:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 908426526}
+        m_TargetAssemblyTypeName: Characters, Assembly-CSharp
+        m_MethodName: OpenHouse
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  clock: {fileID: 135760962}
   houseOccupant: woman
 --- !u!61 &1851857519
 BoxCollider2D:
@@ -3289,7 +3420,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1280, y: 720}
+  m_SizeDelta: {x: 1920, y: 1280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1943779369
 MonoBehaviour:
@@ -3330,18 +3461,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 908426526}
-        m_TargetAssemblyTypeName: Characters, Assembly-CSharp
-        m_MethodName: OpenHouse
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: carpenter
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2042899292}
         m_TargetAssemblyTypeName: Dialogue, Assembly-CSharp
         m_MethodName: OpenDialogue
@@ -3366,6 +3485,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onClickWithTime:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 908426526}
+        m_TargetAssemblyTypeName: Characters, Assembly-CSharp
+        m_MethodName: OpenHouse
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  clock: {fileID: 135760962}
   houseOccupant: carpenter
 --- !u!61 &1943779370
 BoxCollider2D:
@@ -3429,7 +3564,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1280, y: 720}
+  m_SizeDelta: {x: 1920, y: 1280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2028884999
 MonoBehaviour:
@@ -3470,18 +3605,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 908426526}
-        m_TargetAssemblyTypeName: Characters, Assembly-CSharp
-        m_MethodName: OpenHouse
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: girl
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2042899292}
         m_TargetAssemblyTypeName: Dialogue, Assembly-CSharp
         m_MethodName: OpenDialogue
@@ -3506,6 +3629,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onClickWithTime:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 908426526}
+        m_TargetAssemblyTypeName: Characters, Assembly-CSharp
+        m_MethodName: OpenHouse
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  clock: {fileID: 135760962}
   houseOccupant: girl
 --- !u!61 &2028885000
 BoxCollider2D:
