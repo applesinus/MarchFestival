@@ -27,6 +27,7 @@ public class ChoiceBox : MonoBehaviour
         if (DebugMode) Debug.Log("Showing choices: " + preffix);
 
         int i = 0;
+        int shownChoices = 0;
         while (true)
         {
             string text = TextManager.Instance.GetText($"{preffix}.choices[{i}].text");
@@ -95,9 +96,9 @@ public class ChoiceBox : MonoBehaviour
             button.transform.SetParent(transform, false);
 
             RectTransform rect = button.GetComponent<RectTransform>();
-            rect.anchorMin = new Vector2(0.5f, 1);
-            rect.anchorMax = new Vector2(0.5f, 1);
-            rect.anchoredPosition = new Vector2(0, -120*choices.Count);
+            rect.anchorMin = new Vector2(0, 1f-(shownChoices+1)*0.2f);
+            rect.anchorMax = new Vector2(1, 1f-(shownChoices)*0.2f);
+            rect.anchoredPosition = new Vector2(0, 0);
 
             TextMeshProUGUI tmpro = button.transform.Find("Button").Find("Text").GetComponent<TextMeshProUGUI>();
             tmpro.autoSizeTextContainer = false;
@@ -122,6 +123,7 @@ public class ChoiceBox : MonoBehaviour
             if (DebugMode) Debug.Log($"Choice {i}: {text} -> {nextRoot}");
 
             i++;
+            shownChoices++;
         }
     }
 

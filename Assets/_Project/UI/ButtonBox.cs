@@ -34,16 +34,19 @@ public class ButtonBox : MonoBehaviour
 
     public void OnMouseDown()
     {
+        Debug.Log("Button down");
         Animation(baseScale, affectedScale);
     }
 
     public void OnMouseUp()
     {
+        Debug.Log("Button up");
         Animation(affectedScale, baseScale);
     }
 
     public void OnMouseUpAsButton()
     {
+        Debug.Log("Button up as button");
         OnClick.Invoke();
     }
 

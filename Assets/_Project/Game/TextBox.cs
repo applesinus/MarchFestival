@@ -22,13 +22,14 @@ public class TextBox : MonoBehaviour
     [SerializeField] public UnityEvent StartArtifactUsed;
     [SerializeField] public UnityEvent EndArtifactUsed;
     [SerializeField] public UnityEvent NewMessage;
-    [SerializeField] public UnityEvent<int, int> UpdateClock;
+    [SerializeField] public UnityEvent<int, int, bool> UpdateClock;
 
     private int timeOfDay = 2;
     private int day = 0;
 
     private bool isArtifactUsed = false;
     private string thoughtSuffix = "";
+    private bool isArtifactAvailable = true;
 
     private bool isSpacePressed = false;
     private bool isAnimationActive = false;
@@ -140,26 +141,27 @@ public class TextBox : MonoBehaviour
 
             isAnimationActive = true;
 
-            List<(string, string, string)> characterUpdates = getCharacterUpdate();
-            if (characterUpdates != null)
+            if (!isArtifactUsed)
             {
-                foreach ((string name, string sprite, string animation) in characterUpdates)
+                List<(string, string, string)> characterUpdates = getCharacterUpdate();
+                if (characterUpdates != null)
                 {
-                    CharacterEvent.Invoke(name, sprite, animation);
+                    foreach ((string name, string sprite, string animation) in characterUpdates)
+                    {
+                        CharacterEvent.Invoke(name, sprite, animation);
+                    }
                 }
-            }
 
-            if (isArtifactUsed)
-            {
-                isArtifactUsed = false;
-                EndArtifactUsed.Invoke();
-            }
-            else
-            {
-                if (TextManager.Instance.GetText($"dialogue.{dialogueID}[{messageID}].thought") != $"dialogue.{dialogueID}[{messageID}].thought")
+                if (
+                    TextManager.Instance.GetText($"dialogue.{dialogueID}[{messageID}].thought") != $"dialogue.{dialogueID}[{messageID}].thought"
+                    && isArtifactAvailable
+                )
                 {
                     ArtifactEvent.Invoke($"dialogue.{dialogueID}[{messageID}]");
                 }
+            } else
+            {
+                isArtifactUsed = false;
             }
         }
     }
@@ -214,15 +216,6 @@ public class TextBox : MonoBehaviour
 
     public void InitiateDialogue(string id)
     {
-        if (id.Contains("root") || id == "intro")
-        {
-            day += timeOfDay/2;
-            timeOfDay = (timeOfDay+1)%3;
-            UpdateClock.Invoke(day, timeOfDay);
-
-            if (DebugMode) Debug.Log($"Day: {day}, Time of day: {timeOfDay}");
-        }
-
         gameObject.SetActive(true);
         isChoiceActive = false;
         isAnimationActive = false;
@@ -278,7 +271,33 @@ public class TextBox : MonoBehaviour
         }
 
         isArtifactUsed = true;
+        isArtifactAvailable = false;
         StartArtifactUsed.Invoke();
         messageEnd();
+    }
+
+    private void updateCharacters()
+    {
+        if (isArtifactUsed)
+        {
+            isArtifactUsed = false;
+            EndArtifactUsed.Invoke();
+        }
+    }
+
+    public void ExitHouse()
+    {
+        if (dialogueID == "no") return;
+
+        timeOfDay = (timeOfDay+1)%3;
+        if (timeOfDay == 0)
+        {
+            day++;
+            isArtifactAvailable = true;
+        }
+
+        UpdateClock.Invoke(day, timeOfDay, isArtifactAvailable);
+
+        if (DebugMode) Debug.Log($"Day: {day}, Time of day: {timeOfDay}");
     }
 }

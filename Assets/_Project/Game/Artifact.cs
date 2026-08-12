@@ -96,19 +96,19 @@ public class Artifact : MonoBehaviour
 
     public void Hide()
     {
-        Debug.Log("Artifact hidden!");
         if (gameObject.activeSelf)
         {
             gameObject.SetActive(false);
+            Debug.Log("Artifact hidden!");
         }
     }
 
     public void Show()
     {
-        Debug.Log("Artifact shown!");
         if (!gameObject.activeSelf)
         {
             gameObject.SetActive(true);
+            Debug.Log("Artifact shown!");
         }
     }
 
