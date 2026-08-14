@@ -366,18 +366,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1542032867}
-        m_TargetAssemblyTypeName: ClipsSwitcher, Assembly-CSharp
-        m_MethodName: PlayPianoMix
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   onClickWithTime:
     m_PersistentCalls:
       m_Calls:
@@ -686,18 +674,6 @@ MonoBehaviour:
       - m_Target: {fileID: 2042899292}
         m_TargetAssemblyTypeName: Dialogue, Assembly-CSharp
         m_MethodName: OpenDialogue
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1542032867}
-        m_TargetAssemblyTypeName: ClipsSwitcher, Assembly-CSharp
-        m_MethodName: PlayPianoMix
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1538,18 +1514,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1542032867}
-        m_TargetAssemblyTypeName: ClipsSwitcher, Assembly-CSharp
-        m_MethodName: PlayPianoMix
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   onClickWithTime:
     m_PersistentCalls:
       m_Calls:
@@ -2172,18 +2136,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1542032867}
-        m_TargetAssemblyTypeName: ClipsSwitcher, Assembly-CSharp
-        m_MethodName: PlayPianoMix
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   onClickWithTime:
     m_PersistentCalls:
       m_Calls:
@@ -2663,6 +2615,36 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Clock, Assembly-CSharp
         m_MethodName: UpdateClock
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  PlayHGMix:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1542032867}
+        m_TargetAssemblyTypeName: ClipsSwitcher, Assembly-CSharp
+        m_MethodName: PlayHGMix
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  PlayPianoMix:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1542032867}
+        m_TargetAssemblyTypeName: ClipsSwitcher, Assembly-CSharp
+        m_MethodName: PlayPianoMix
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3907,18 +3889,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1542032867}
-        m_TargetAssemblyTypeName: ClipsSwitcher, Assembly-CSharp
-        m_MethodName: PlayPianoMix
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   onClickWithTime:
     m_PersistentCalls:
       m_Calls:
@@ -4564,18 +4534,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1542032867}
-        m_TargetAssemblyTypeName: ClipsSwitcher, Assembly-CSharp
-        m_MethodName: PlayPianoMix
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   onClickWithTime:
     m_PersistentCalls:
       m_Calls:
@@ -4782,18 +4740,6 @@ MonoBehaviour:
       - m_Target: {fileID: 2042899292}
         m_TargetAssemblyTypeName: Dialogue, Assembly-CSharp
         m_MethodName: OpenDialogue
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1542032867}
-        m_TargetAssemblyTypeName: ClipsSwitcher, Assembly-CSharp
-        m_MethodName: PlayPianoMix
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5092,18 +5038,6 @@ MonoBehaviour:
       - m_Target: {fileID: 2042899292}
         m_TargetAssemblyTypeName: Dialogue, Assembly-CSharp
         m_MethodName: OpenDialogue
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1542032867}
-        m_TargetAssemblyTypeName: ClipsSwitcher, Assembly-CSharp
-        m_MethodName: PlayPianoMix
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

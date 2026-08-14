@@ -23,6 +23,8 @@ public class TextBox : MonoBehaviour
     [SerializeField] public UnityEvent EndArtifactUsed;
     [SerializeField] public UnityEvent NewMessage;
     [SerializeField] public UnityEvent<int, int, bool> UpdateClock;
+    [SerializeField] public UnityEvent PlayHGMix;
+    [SerializeField] public UnityEvent PlayPianoMix;
 
     private int timeOfDay = 2;
     private int day = 0;
@@ -223,6 +225,9 @@ public class TextBox : MonoBehaviour
         dialogueID = id;
         messageID = -1;
 
+        if (id == "tavernRelax" && timeOfDay == 2) PlayHGMix.Invoke(); else PlayPianoMix.Invoke();
+        Debug.Log($"Dialogue initiated: {id}");
+
         MessageBoxClicked();
     }
 
@@ -236,7 +241,7 @@ public class TextBox : MonoBehaviour
         {
             if (houseOccupant == "woman")
             {
-                rootID = "tavernRelax";
+                if (timeOfDay == 2) rootID = "tavernRelax"; else rootID = "tavernRelaxDay";
             }
             else
             {
@@ -261,14 +266,7 @@ public class TextBox : MonoBehaviour
             return;
         }
 
-        if (thoughtType == "bad")
-        {
-            thoughtSuffix = "_bad";
-        }
-        else
-        {
-            thoughtSuffix = "";
-        }
+        if (thoughtType == "bad") thoughtSuffix = "_bad"; else thoughtSuffix = "";
 
         isArtifactUsed = true;
         isArtifactAvailable = false;
