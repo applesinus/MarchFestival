@@ -18,6 +18,7 @@ public class House :  MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     private Coroutine scaleCoroutine;
     private Vector3 baseScale = Vector3.one;
     private bool isScaleCached = false;
+    private UnityEngine.UI.Image img;
 
     private void Start()
     {
@@ -34,7 +35,7 @@ public class House :  MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (gameObject.TryGetComponent<UnityEngine.UI.Image>(out var img))
+        if (gameObject.TryGetComponent(out img))
         {
             img.material = material;
         }
@@ -49,10 +50,7 @@ public class House :  MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (gameObject.TryGetComponent<UnityEngine.UI.Image>(out var img))
-        {
-            img.material = null;
-        }
+        if (gameObject.TryGetComponent<UnityEngine.UI.Image>(out var img)) img.material = null;
 
         nameText.SetActive(false);
         isPointerOnSprite = false;
@@ -60,10 +58,7 @@ public class House :  MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
 
     private void scale(Vector2 targetScale)
     {
-        if (scaleCoroutine != null)
-        {
-            StopCoroutine(scaleCoroutine);
-        }
+        if (scaleCoroutine != null) StopCoroutine(scaleCoroutine);
         scaleCoroutine = StartCoroutine(scaleAnimation(targetScale, 0.1f));
     }
 
@@ -99,6 +94,7 @@ public class House :  MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         if (isPointerOnSprite)
         {
             transform.localScale = baseScale;
+            if (img.material != null) img.material = null;
 
             onClick.Invoke(houseOccupant);
             onClickWithTime.Invoke(houseOccupant, clock.timeProgress);
