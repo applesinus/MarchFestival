@@ -52,6 +52,19 @@ public class AudioManager : MonoBehaviour
         _musicSource.Play();
     }
 
+    public void ChangeMusic(AudioClip clip)
+    {
+        if (_musicSource.clip == clip) return;
+
+        float time = _musicSource.time;
+        time %= clip.length;
+
+        _musicSource.clip = clip;
+        _musicSource.loop = true;
+        _musicSource.Play();
+        _musicSource.time = time;
+    }
+
     public void PlayClick(AudioClip clip)
     {
         _sfxSource.PlayOneShot(clip);

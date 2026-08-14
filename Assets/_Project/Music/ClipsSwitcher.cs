@@ -11,7 +11,7 @@ public class ClipsSwitcher : MonoBehaviour
         PlayPianoMix();
     }
 
-    public void PlayMainMix() => AudioManager.Instance.PlayMusic(MainMix);
-    public void PlayHGMix() => AudioManager.Instance.PlayMusic(HGMix);
-    public void PlayPianoMix() => AudioManager.Instance.PlayMusic(PianoMix);
+    public void PlayMainMix() => AudioManager.Instance.ChangeMusic(MainMix);
+    public void PlayHGMix() => AudioManager.Instance.ChangeMusic(HGMix);
+    public void PlayPianoMix() => AudioManager.Instance.ChangeMusic(PianoMix);
 }
