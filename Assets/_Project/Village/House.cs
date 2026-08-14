@@ -13,14 +13,23 @@ public class House :  MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
     [SerializeField] public string houseOccupant;
     [SerializeField] public Material material;
 
-    private bool isPointerClicked;
+    private GameObject nameText;
+    private bool isPointerOnSprite;
     private Coroutine scaleCoroutine;
     private Vector3 baseScale = Vector3.one;
     private bool isScaleCached = false;
 
+    private void Start()
+    {
+        gameObject.GetComponent<UnityEngine.UI.Image>().alphaHitTestMinimumThreshold = 0.1f;
+        nameText = transform.Find("Name").gameObject;
+        nameText.SetActive(false);
+    }
+
     public void OnEnable()
     {
         transform.localScale = baseScale;
+        if (nameText != null) nameText.SetActive(false);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -33,6 +42,9 @@ public class House :  MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         {
             Debug.LogWarning("Image not found on house!");
         }
+
+        nameText.SetActive(true);
+        isPointerOnSprite = true;
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -41,6 +53,9 @@ public class House :  MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         {
             img.material = null;
         }
+
+        nameText.SetActive(false);
+        isPointerOnSprite = false;
     }
 
     private void scale(Vector2 targetScale)
@@ -77,19 +92,17 @@ public class House :  MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, 
         }
         
         scale(new Vector2(baseScale.x * 1.1f, baseScale.y * 1.1f));
-
-        isPointerClicked = true;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        if (isPointerClicked)
+        if (isPointerOnSprite)
         {
             transform.localScale = baseScale;
 
             onClick.Invoke(houseOccupant);
             onClickWithTime.Invoke(houseOccupant, clock.timeProgress);
-            isPointerClicked = false;
+            isPointerOnSprite = false;
         }
         else
         {
